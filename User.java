@@ -1,6 +1,7 @@
 public class User {
     private String name;
-    private int score = 0;;
+    private int score = 0;
+    ;
     private int age;
     private Gender gender;
 
@@ -14,6 +15,7 @@ public class User {
     public String getName() {
         return name;
     }
+
     public int getAge() {
         return age;
     }
@@ -21,7 +23,12 @@ public class User {
     public int getScore() {
         return score;
     }
+
     public Gender getGender() {
         return gender;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
