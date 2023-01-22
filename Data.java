@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Data {
-    private String questionsPath = "src/questions.csv";
+    private static String questionsPath = "src/questions.csv";
     private String usersPath = "src/users.csv";
 
 
@@ -15,7 +15,7 @@ public class Data {
         for implementing this function, I used this link:
         https://www.w3schools.com/java/java_files_read.asp
     */
-    public void readQuestionsFromFile(Quiz quiz) {
+    public static void readQuestionsFromFile(Quiz quiz) {
         try {
             /*
                 if file already exists will do nothing
@@ -48,7 +48,7 @@ public class Data {
                 int age = Integer.parseInt(data[1]);
                 Gender gender = Gender.convertStringToGenderType(data[2]);
                 int score = Integer.parseInt(data[3]);
-                users.add(new User(name,age,gender));
+                users.add(new User(name, age, gender));
             }
             myReader.close();
         } catch (IOException e) {

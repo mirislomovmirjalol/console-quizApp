@@ -44,4 +44,10 @@ public class Response {
             }
         }
     }
+
+    public static void finishingQuiz(User user) {
+        System.out.println("You finished quiz!\n");
+        System.out.println("Your score is: " + user.getScore());
+        System.out.println("Goodbye " + user.getName() + "!");
+    }
 }

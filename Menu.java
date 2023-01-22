@@ -6,8 +6,11 @@ public class Menu {
     }
 
     public static void startQuiz() {
+        User user = new User(Response.askName(), Response.askAge(), Response.askGender());
         Quiz quiz = new Quiz();
-        quiz.start();
+        Data.readQuestionsFromFile(quiz);
+        quiz.start(user);
+        Response.finishingQuiz(user);
     }
 
     public static void showLeaderBoard() {
@@ -20,7 +23,7 @@ public class Menu {
         System.out.println("Leaderboard:");
 
         for (User user : data.users) {
-            System.out.println(user.getName() + user.getAge() + user.getScore());
+            System.out.println(user.getName() + " " + user.getAge() + " " + user.getScore());
         }
     }
 }

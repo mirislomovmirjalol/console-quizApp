@@ -8,7 +8,7 @@ public class Quiz {
         questions.add(question);
     }
 
-    public void start() {
+    public void start(User user) {
         Scanner scanner = new Scanner(System.in);
         for (Question question : questions) {
             System.out.println(question.getQuestion());
@@ -16,11 +16,11 @@ public class Quiz {
                 System.out.println((i + 1) + " - " + question.getOptions()[i]);
             }
             int answer = scanner.nextInt();
-            checkAnswer(question, answer);
+            checkAnswer(question, answer, user);
         }
     }
 
-    public void checkAnswer(Question question, int answer) {
+    public void checkAnswer(Question question, int answer, User user) {
         //            https://stackoverflow.com/questions/15984623/java-comparing-ints-and-strings-performance
         if (question.getOptions()[answer - 1].equals(question.getAnswer())) {
             /*
@@ -29,7 +29,7 @@ public class Quiz {
             */
 //            User.score++;
             System.out.println("Correct!");
-
+            user.setScore(user.getScore() + 1);
         }
             /*
                 if you want to tell user that answer is incorrect, uncomment this Code
