@@ -48,7 +48,9 @@ public class Data {
                 int age = Integer.parseInt(data[1]);
                 Gender gender = Gender.convertStringToGenderType(data[2]);
                 int score = Integer.parseInt(data[3]);
-                users.add(new User(name, age, gender));
+                User user = new User(name, age, gender);
+                user.setScore(score);
+                users.add(user);
             }
             myReader.close();
         } catch (IOException e) {
