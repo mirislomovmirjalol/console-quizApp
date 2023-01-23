@@ -2,13 +2,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileWriter;   // Import the FileWriter class
 
 public class Data {
-    private static String questionsPath = "src/questions.csv";
-    private String usersPath = "src/users.csv";
+    private static final String questionsPath = "src/questions.csv";
+    private static final String usersPath = "src/users.csv";
 
 
-    ArrayList<User> users = new ArrayList<User>();
+    static ArrayList<User> users = new ArrayList<User>();
 
 
     /*
@@ -36,7 +37,7 @@ public class Data {
         }
     }
 
-    public void readUsersFromFile() {
+    public static void readUsersFromFile() {
         try {
             File file = new File(usersPath);
             file.createNewFile();
@@ -53,6 +54,22 @@ public class Data {
                 users.add(user);
             }
             myReader.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveUserToFile(User newUser) {
+        readUsersFromFile();
+        try {
+            FileWriter writer = new FileWriter(usersPath);
+            for (User user : users) {
+                writer.write(user.getName() + "," + user.getAge() + "," + user.getGender().getKey() + "," + user.getScore() + "\n");
+            }
+            writer.write(newUser.getName() + "," + newUser.getAge() + "," + newUser.getGender().getKey() + "," + newUser.getScore() + "\n");
+            writer.close();
+            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
