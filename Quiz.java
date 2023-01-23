@@ -1,7 +1,11 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Quiz {
+//    set isRandomQuestions to true if you want to randomize the questions
+    private Boolean isRandomQuestions = false;
     ArrayList<Question> questions = new ArrayList<Question>();
 
     public void addQuestion(Question question) {
@@ -10,6 +14,9 @@ public class Quiz {
 
     public void start(User user) {
         Scanner scanner = new Scanner(System.in);
+        if (isRandomQuestions) {
+            Collections.shuffle(questions, new Random());
+        }
         for (Question question : questions) {
             System.out.println(question.getQuestion());
             for (int i = 0; i < question.getOptions().length; i++) {
