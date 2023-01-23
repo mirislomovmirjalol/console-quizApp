@@ -32,15 +32,20 @@ public class Response {
         System.out.println("1. Start the quiz");
         System.out.println("2. Show the leaderboard");
         System.out.println("3. Exit");
-        int answer = Integer.parseInt(scanner.nextLine());
+        String answer = scanner.nextLine();
         switch (answer) {
-            case 1 -> {
+            case "1" -> {
                 Menu.startQuiz();
             }
-            case 2 -> {
+            case "2" -> {
                 Menu.showLeaderBoard();
             }
-            case 3 -> {
+            case "3" -> {
+                Menu.exit();
+            }
+            default -> {
+                System.out.println("Please enter a valid number!");
+                showMenu();
             }
         }
     }
@@ -48,6 +53,6 @@ public class Response {
     public static void finishingQuiz(User user) {
         System.out.println("You finished quiz!\n");
         System.out.println("Your score is: " + user.getScore());
-        System.out.println("Goodbye " + user.getName() + "!");
+        System.out.println("Good job " + user.getName() + "!");
     }
 }

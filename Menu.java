@@ -12,6 +12,7 @@ public class Menu {
         quiz.start(user);
         Data.saveUserToFile(user);
         Response.finishingQuiz(user);
+        mainMenu();
     }
 
     public static void showLeaderBoard() {
@@ -25,5 +26,9 @@ public class Menu {
         for (User user : Data.users) {
             System.out.println(user.getName() + " " + user.getAge() + " " + user.getScore());
         }
+    }
+
+    public static void exit() {
+        System.exit(0);
     }
 }
